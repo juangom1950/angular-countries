@@ -14,6 +14,7 @@ export class ByCapitalPageComponent {
 
   constructor( private countriesService: CountriesService ) {}
 
+  // If we don't subscribe to the observable, the observable is never going to be executed.
   searchByCapital( term: string ):void  {
     this.countriesService.searchCapital( term )
       .subscribe( countries => {

@@ -22,10 +22,14 @@ export class CountryPageComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // because I know that this is an observable we have access to the pipes
     this.activatedRoute.params
       .pipe(
+        // Este recibe el valor anterior. "params" in this case and it creates a new observable
+        // base on the pass observable, so we can subcribe to it.
         switchMap( ({ id }) => this.countriesService.searchCountryByAlphaCode( id )),
       )
+      // Here we are subscribe to the result of that new observable
       .subscribe( country => {
         if ( !country ) return this.router.navigateByUrl('');
         return this.country = country;

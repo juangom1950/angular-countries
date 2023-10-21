@@ -41,9 +41,11 @@ export class CountriesService {
       );
   }
 
+  // I am going to return an observable of type Country[]
   searchRegion( region: string ): Observable<Country[]> {
 
     const url = `${ this.apiUrl }/region/${ region }`;
+    // Because this is an observable this isn't going to be executed until we don't subscribe to it
     return this.http.get<Country[]>( url )
       .pipe(
         catchError( () => of([]) )

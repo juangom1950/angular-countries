@@ -23,6 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./countries/countries.module').then( m => m.CountriesModule )
   },
   {
+    // This is the defult
     path: '**',
     redirectTo: 'countries'
   }
@@ -30,6 +31,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    // This is the main Routing
     RouterModule.forRoot( routes ),
   ],
   exports: [
